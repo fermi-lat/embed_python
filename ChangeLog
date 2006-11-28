@@ -1,0 +1,65 @@
+------------------------------------------------------------
+User: burnett  Mon Nov 27 11:55:59 PST 2006
+users/burnett/embed_python/src
+
+Added Files:
+	Module.cxx 
+Removed Files:
+	PySetup.cxx 
+Log Message:
+renaming PySetup to Module, in namespace
+    *
+------------------------------------------------------------
+User: burnett  Mon Nov 27 11:55:59 PST 2006
+users/burnett/embed_python/embed_python
+
+Added Files:
+	Module.h 
+Removed Files:
+	PySetup.h 
+Log Message:
+renaming PySetup to Module, in namespace
+    *
+------------------------------------------------------------
+User: burnett  Mon Nov 27 11:55:59 PST 2006
+users/burnett/embed_python/src/test
+
+Modified Files:
+	runPy.cxx 
+Log Message:
+renaming PySetup to Module, in namespace
+    *
+------------------------------------------------------------
+User: burnett  Mon Nov 27 11:55:59 PST 2006
+users/burnett/embed_python/cmt
+
+Modified Files:
+	requirements 
+Log Message:
+renaming PySetup to Module, in namespace
+    *
+------------------------------------------------------------
+User: burnett  Fri Nov 24 14:49:24 PST 2006
+users/burnett/embed_python
+
+Log Message:
+initial import
+
+Status:
+
+Vendor Tag:	THB
+Release Tags:	v0
+		
+N users/burnett/embed_python/.cvsignore
+N users/burnett/embed_python/cmt/.cvsignore
+N users/burnett/embed_python/cmt/requirements
+N users/burnett/embed_python/doc/release.notes
+N users/burnett/embed_python/embed_python/PySetup.h
+N users/burnett/embed_python/python/.cvsignore
+N users/burnett/embed_python/python/Test.py
+N users/burnett/embed_python/src/PySetup.cxx
+N users/burnett/embed_python/src/test/runPy.cxx
+
+No conflicts created by this import
+
+    *
