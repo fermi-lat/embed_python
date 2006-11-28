@@ -1,5 +1,14 @@
 ------------------------------------------------------------
 User: burnett  Tue Nov 28 08:42:27 PST 2006
+embed_python/doc
+
+Modified Files:
+	release.notes 
+Log Message:
+new tag, for linux build
+    *
+------------------------------------------------------------
+User: burnett  Tue Nov 28 08:42:27 PST 2006
 embed_python/cmt
 
 Modified Files:
