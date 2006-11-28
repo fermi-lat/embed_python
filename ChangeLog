@@ -1,4 +1,32 @@
 ------------------------------------------------------------
+User: burnett  Mon Nov 27 19:03:12 PST 2006
+embed_python
+
+Log Message:
+initial import
+
+Status:
+
+Vendor Tag:	THB
+Release Tags:	v0
+		
+N embed_python/.cvsignore
+N embed_python/ChangeLog
+N embed_python/cmt/.cvsignore
+N embed_python/cmt/NMake
+N embed_python/cmt/requirements
+N embed_python/doc/release.notes
+N embed_python/embed_python/Module.h
+N embed_python/python/.cvsignore
+N embed_python/python/Test.py
+N embed_python/src/mainpage.h
+N embed_python/src/Module.cxx
+N embed_python/src/test/runPy.cxx
+
+No conflicts created by this import
+
+    *
+------------------------------------------------------------
 User: burnett  Mon Nov 27 11:55:59 PST 2006
 users/burnett/embed_python/src
 
