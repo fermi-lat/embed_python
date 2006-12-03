@@ -1,4 +1,13 @@
 ------------------------------------------------------------
+User: burnett  Sun Dec  3 11:50:28 PST 2006
+embed_python/cmt
+
+Modified Files:
+	requirements 
+Log Message:
+try to fix linux link
+    *
+------------------------------------------------------------
 TAG
 Tag name: v0r0p1, operation: add
 Package: embed_python
