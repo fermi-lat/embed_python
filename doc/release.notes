@@ -3,10 +3,10 @@
 
   package embed_python
   Package coordinators: T.Burnett
-$Id: release.notes,v 1.4 2006/12/03 19:50:28 burnett Exp $
+$Id: release.notes,v 1.5 2006/12/03 20:42:08 burnett Exp $
 
 @verbatim
-  v0r0p3   03-dec-06  try to fix linux link
+  v0r0p4   03-dec-06  try to fix linux link
   v0r0p1   28-nov-06  Initial test
 
 */
