@@ -1,4 +1,13 @@
 ------------------------------------------------------------
+User: burnett  Tue Dec  5 08:13:31 PST 2006
+embed_python/cmt
+
+Modified Files:
+	requirements 
+Log Message:
+util maybe has openpty and forkpty?
+    *
+------------------------------------------------------------
 TAG
 Tag name: v0r0p5, operation: add
 Package: embed_python
