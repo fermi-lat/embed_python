@@ -1,5 +1,14 @@
 ------------------------------------------------------------
 User: burnett  Wed Dec  6 08:15:15 PST 2006
+embed_python/src
+
+Modified Files:
+	Module.cxx 
+Log Message:
+add recognition of compound name, lists of numbers.
+    *
+------------------------------------------------------------
+User: burnett  Wed Dec  6 08:15:15 PST 2006
 embed_python/python
 
 Modified Files:
