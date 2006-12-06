@@ -1,4 +1,13 @@
 ------------------------------------------------------------
+User: burnett  Wed Dec  6 08:15:15 PST 2006
+embed_python/cmt
+
+Modified Files:
+	requirements 
+Log Message:
+add recognition of compound name, lists of numbers.
+    *
+------------------------------------------------------------
 TAG
 Tag name: v0r0p6, operation: add
 Package: embed_python
