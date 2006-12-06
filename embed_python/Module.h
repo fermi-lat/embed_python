@@ -1,7 +1,7 @@
 /** @file Module.h
     @brief declare Module class
 
-    $Header: /nfs/slac/g/glast/ground/cvs/users/burnett/embed_python/embed_python/Module.h,v 1.2 2006/11/28 03:00:41 burnett Exp $
+    $Header: /nfs/slac/g/glast/ground/cvs/embed_python/embed_python/Module.h,v 1.1.1.1 2006/11/28 03:03:12 burnett Exp $
 */
 #ifndef embed_python_Module_h
 #define embed_python_Module_h
@@ -43,6 +43,9 @@ public:
     /// set a list of strings
     void getList(std::string listname, std::vector<std::string>& names);
 
+    /// set a list of values
+    void getList(std::string listname, std::vector<double>& values);
+
     /// examine type of a PyObject
     std::string type(const PyObject* obj)const;
 
@@ -61,6 +64,7 @@ public:
 private:
 
     PyObject * m_module; ///< the module we manage
+    std::string m_moduleName; 
 
     bool m_verbose;
     bool verbose()const{return m_verbose;}
