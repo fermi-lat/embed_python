@@ -1,5 +1,14 @@
 ------------------------------------------------------------
 User: jchiang  Sun Dec 10 21:59:07 PST 2006
+embed_python/src
+
+Modified Files:
+	Module.cxx 
+Log Message:
+add code to prepend a local directory to sys.path to avoid modifying PYTHONPATH
+    *
+------------------------------------------------------------
+User: jchiang  Sun Dec 10 21:59:07 PST 2006
 embed_python/embed_python
 
 Modified Files:
