@@ -1,5 +1,14 @@
 ------------------------------------------------------------
 User: burnett  Mon Dec 11 11:03:05 PST 2006
+embed_python/doc
+
+Modified Files:
+	release.notes 
+Log Message:
+adopt JC changes, tag.
+    *
+------------------------------------------------------------
+User: burnett  Mon Dec 11 11:03:05 PST 2006
 embed_python/cmt
 
 Modified Files:
