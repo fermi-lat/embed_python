@@ -1,7 +1,7 @@
 /** @file Module.h
     @brief declare Module class
 
-    $Header: /nfs/slac/g/glast/ground/cvs/embed_python/embed_python/Module.h,v 1.3 2006/12/11 05:59:07 jchiang Exp $
+    $Header: /nfs/slac/g/glast/ground/cvs/embed_python/embed_python/Module.h,v 1.4 2006/12/11 18:19:34 jchiang Exp $
 */
 #ifndef embed_python_Module_h
 #define embed_python_Module_h
@@ -24,12 +24,6 @@ namespace embed_python {
 */
 class Module {
 public:
-    /// ctor 
-    /// @param path path to module. If empty, assume cwd
-    /// @param module name of module to load, without ".py".  Must be on pythonpath
-    /// @param verbose [false] useful output if debugging?
-    Module(std::string path, std::string module, bool verbose=false);
-
 
     /// @param path path to module. If empty, assume cwd
     /// @param module name of module to load, without ".py". 
