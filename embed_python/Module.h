@@ -1,7 +1,7 @@
 /** @file Module.h
     @brief declare Module class
 
-    $Header: /nfs/slac/g/glast/ground/cvs/embed_python/embed_python/Module.h,v 1.1.1.1 2006/11/28 03:03:12 burnett Exp $
+    $Header: /nfs/slac/g/glast/ground/cvs/embed_python/embed_python/Module.h,v 1.2 2006/12/06 16:15:15 burnett Exp $
 */
 #ifndef embed_python_Module_h
 #define embed_python_Module_h
@@ -28,7 +28,9 @@ public:
     /// @param path path to module. If empty, assume cwd
     /// @param module name of module to load, without ".py".  Must be on pythonpath
     /// @param verbose [false] useful output if debugging?
-    Module(std::string path, std::string module, bool verbose=false);
+    /// @param python_dir Directory to be prepended to PYTHONPATH
+    Module(std::string path, std::string module, bool verbose=false,
+           const std::string & python_dir="");
     ~Module();
 
     /// return a numeric type
