@@ -1,4 +1,13 @@
 ------------------------------------------------------------
+User: jchiang  Mon Dec 11 10:19:34 PST 2006
+embed_python/embed_python
+
+Modified Files:
+	Module.h 
+Log Message:
+add alternate constructor
+    *
+------------------------------------------------------------
 User: jchiang  Sun Dec 10 21:59:07 PST 2006
 embed_python/src
 
