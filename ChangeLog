@@ -1,5 +1,14 @@
 ------------------------------------------------------------
 User: jchiang  Wed Dec 13 14:27:13 PST 2006
+embed_python/src
+
+Modified Files:
+	Module.cxx 
+Log Message:
+set sys.argv in Module.cxx
+    *
+------------------------------------------------------------
+User: jchiang  Wed Dec 13 14:27:13 PST 2006
 embed_python/python
 
 Modified Files:
