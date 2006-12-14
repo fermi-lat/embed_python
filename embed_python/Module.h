@@ -1,7 +1,7 @@
 /** @file Module.h
     @brief declare Module class
 
-    $Header: /nfs/slac/g/glast/ground/cvs/embed_python/embed_python/Module.h,v 1.4 2006/12/11 18:19:34 jchiang Exp $
+    $Header: /nfs/slac/g/glast/ground/cvs/embed_python/embed_python/Module.h,v 1.5 2006/12/11 19:03:05 burnett Exp $
 */
 #ifndef embed_python_Module_h
 #define embed_python_Module_h
@@ -29,26 +29,29 @@ public:
     /// @param module name of module to load, without ".py". 
     /// @param python_dir Directory to be prepended to PYTHONPATH
     /// @param verbose [false] useful output if debugging?
-    Module(std::string path, std::string module, 
+    Module(const std::string& path, const std::string& module, 
            const std::string & python_dir="",
            bool verbose=false);
            
     ~Module();
 
     /// return a numeric type
-    double operator[](std::string key);
+    double operator[](const std::string& key);
 
     /// set a numeric value
-    void getValue(std::string attribute, double & value);
+    void getValue(const std::string& attribute, double & value);
+
+    /// set a numeric value
+    void getValue(const std::string& attribute, double & value, double default_value);
 
     /// set a string value
-    void getValue(std::string attribute, std::string& value);
+    void getValue(const std::string& attribute, std::string& value);
 
     /// set a list of strings
-    void getList(std::string listname, std::vector<std::string>& names);
+    void getList(const std::string& listname, std::vector<std::string>& names);
 
     /// set a list of values
-    void getList(std::string listname, std::vector<double>& values);
+    void getList(const std::string& listname, std::vector<double>& values);
 
     /// examine type of a PyObject
     std::string type(const PyObject* obj)const;
@@ -57,13 +60,16 @@ public:
     PyObject* call(PyObject* o, PyObject* args=0 )const;
 
     /// return the attribute -- exception if does not exist
-    PyObject * attribute(std::string name);
+    /// @param name the attribute name, perhaps compound
+    /// @param check if false, do not check for success, return null
+    PyObject * attribute(const std::string& name, bool check=true);
 
     /// access root, if path was defined
     std::string root()const{return m_root;}
 
     /// test program, to be called directly from a main.
-    static int test(int argc, char* argv[], std::string modulename);
+    static int test(int argc, char* argv[], const std::string& modulename);
+
 
 private:
 
