@@ -1,4 +1,15 @@
 ------------------------------------------------------------
+User: lsrea  Thu Dec 14 13:48:26 PST 2006
+embed_python/embed_python
+
+Modified Files:
+	Module.h 
+Log Message:
+Add support for accessing ints (including default value option)
+Add default_value option to string access
+
+    *
+------------------------------------------------------------
 User: burnett  Thu Dec 14 10:58:33 PST 2006
 embed_python/src
 
