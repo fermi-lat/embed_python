@@ -1,5 +1,16 @@
 ------------------------------------------------------------
 User: lsrea  Thu Dec 14 13:48:26 PST 2006
+embed_python/src
+
+Modified Files:
+	Module.cxx 
+Log Message:
+Add support for accessing ints (including default value option)
+Add default_value option to string access
+
+    *
+------------------------------------------------------------
+User: lsrea  Thu Dec 14 13:48:26 PST 2006
 embed_python/embed_python
 
 Modified Files:
