@@ -1,7 +1,7 @@
 /** @file Module.h
     @brief declare Module class
 
-    $Header: /nfs/slac/g/glast/ground/cvs/embed_python/embed_python/Module.h,v 1.5 2006/12/11 19:03:05 burnett Exp $
+    $Header: /nfs/slac/g/glast/ground/cvs/embed_python/embed_python/Module.h,v 1.6 2006/12/14 18:42:21 burnett Exp $
 */
 #ifndef embed_python_Module_h
 #define embed_python_Module_h
@@ -38,14 +38,21 @@ public:
     /// return a numeric type
     double operator[](const std::string& key);
 
-    /// set a numeric value
-    void getValue(const std::string& attribute, double & value);
 
-    /// set a numeric value
+    /// set an int value
+    void getValue(const std::string& attribute, int & value);
+    /// set an int value with default
+    void getValue(const std::string& attribute, int & value, int default_value);
+
+    /// set a double value
+    void getValue(const std::string& attribute, double & value);
+    /// set a double value with default
     void getValue(const std::string& attribute, double & value, double default_value);
 
     /// set a string value
     void getValue(const std::string& attribute, std::string& value);
+    /// set a string value with default
+    void getValue(const std::string& attribute, std::string& value, std::string default_value);
 
     /// set a list of strings
     void getList(const std::string& listname, std::vector<std::string>& names);
