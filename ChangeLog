@@ -1,4 +1,13 @@
 ------------------------------------------------------------
+User: burnett  Thu Dec 14 10:58:33 PST 2006
+embed_python/src
+
+Modified Files:
+	Module.cxx 
+Log Message:
+better use of default.
+    *
+------------------------------------------------------------
 User: burnett  Thu Dec 14 10:42:21 PST 2006
 embed_python/src
 
