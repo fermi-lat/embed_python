@@ -1,6 +1,7 @@
 /** @file Module.cxx
     @brief define Module class
 
+    $Header: /nfs/slac/g/glast/ground/cvs/embed_python/src/Module.cxx,v 1.9 2006/12/14 18:58:33 burnett Exp $
 */
 
 #include "embed_python/Module.h"
@@ -24,11 +25,19 @@ namespace {
     char * _getcwd(  char * buffer,   size_t maxlen ){return ::getcwd(buffer, maxlen);}
 }
 #endif
+
+namespace {
+    bool initialized(false);
+}
+
 using namespace embed_python;
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Module::Module(std::string path, std::string module, bool verbosity)
-: m_verbose(verbosity)
+
+Module::Module(const std::string& path, const std::string& module,
+               const std::string & python_dir, bool verbosity)
+: m_moduleName(module)
+, m_verbose(verbosity)
 , m_root("")
 {
     char oldcwd[128], newcwd[128];
@@ -43,7 +52,34 @@ Module::Module(std::string path, std::string module, bool verbosity)
         if( verbose()) std::cout << "switched to folder" << newcwd << std::endl;
         m_root=newcwd;
     }
-    Py_Initialize();
+    if( ! initialized ){
+        initialized = true;
+        Py_Initialize();
+    }
+
+    // Set a default sys.argv[0] for naive modules (e.g., numarray)
+    // that expect this.
+    m_module = PyImport_ImportModule("sys");
+    check_error("Module: error parsing module sys");
+    PyObject * sys_dict_setitem(attribute("__dict__.__setitem__"));
+    PyObject * mylist(Py_BuildValue("[s]", "embed_python"));
+    PyObject * args(Py_BuildValue("(sO)", "argv", mylist));
+    call(sys_dict_setitem, args);
+    Py_DECREF(sys_dict_setitem);
+    Py_DECREF(args);
+    Py_DECREF(mylist); 
+
+    if (!python_dir.empty()) {
+       // this is equivalent to: 
+       // import sys 
+       // sys.path.insert(0, python_dir)
+       PyObject * sys_path_insert(attribute("path.insert"));
+       args = Py_BuildValue("(is)", 0, python_dir.c_str());
+       call(sys_path_insert, args);
+       Py_DECREF(sys_path_insert);
+       Py_DECREF(args);
+    }
+    Py_DECREF(m_module);
 
     m_module = PyImport_ImportModule(const_cast<char*>(module.c_str()));
     check_error("Module: error parsing module "+module);
@@ -77,40 +113,94 @@ Module::~Module()
     Py_Finalize();
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-PyObject* Module::attribute(std::string name)
+PyObject* Module::attribute(const std::string& name, bool check)
 {
-    ///@todo. If compound name, "module.attribute", parse it and check for module
+    unsigned int c (name.find_first_of("."));
+    if( c != std::string::npos) {
+        PyObject * t = attribute(name.substr(0,c));
+        PyObject * ret = PyObject_GetAttrString(t, const_cast<char*>(name.substr(c+1).c_str()));
+        if ( check)  check_error("Module: did not find attribute "+name); else PyErr_Clear();
+        return ret;
+    }
     PyObject* ret = PyObject_GetAttrString(m_module,const_cast<char*>(name.c_str()));
-    check_error("Module: did not find attribute "+name);
+    if ( check ) check_error("Module: did not find attribute "+name); else PyErr_Clear();
     return ret;
 }
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-double Module::operator[](std::string key)
+double Module::operator[](const std::string& key)
 { 
     PyObject* obj = attribute(key);
-    double dval (PyFloat_AsDouble(attribute(key)));
+    double dval (PyFloat_AsDouble(obj));
     check_error("Module::operator[] -- "+key+" not a numeric type");
     return dval;
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-void Module::getValue(std::string key, double& value)
+void Module::getValue(const std::string& key, int& value)
 { 
     value = PyFloat_AsDouble(attribute(key));
-    check_error("Module::getAttribute -- "+key+" not a numeric type");
+    check_error("Module::getValue -- "+key+" not an integer type");
     return;
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-void Module::getValue(std::string key, std::string& value)
+void Module::getValue(const std::string& key, int& value, int default_value)
+{ 
+    PyObject* o = attribute(key, false); 
+    if( o==0){ 
+        value = default_value;
+
+    }else{
+        value =PyInt_AsLong(o);
+        check_error("Module::getValue -- "+key+" not an integer type"); 
+    }
+    return;
+}
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+void Module::getValue(const std::string& key, double& value)
+{ 
+    value = PyFloat_AsDouble(attribute(key));
+    check_error("Module::getValue -- "+key+" not a numeric type");
+    return;
+}
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+void Module::getValue(const std::string& key, double& value, double default_value)
+{ 
+    PyObject* o = attribute(key, false); 
+    if( o==0){ 
+        value = default_value;
+
+    }else{
+        value =PyFloat_AsDouble(o);
+        check_error("Module::getValue -- "+key+" not a numeric type"); 
+    }
+    return;
+}
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+void Module::getValue(const std::string& key, std::string& value)
 { 
     char * str = PyString_AsString(attribute(key));
-    check_error("Module::getAttribute-- "+key+" not a str type");
+    check_error("Module::getValue-- "+key+" not a string type");
     value = std::string(str);
     return;
 }
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-void Module::getList(std::string listname, std::vector<std::string>& names)
+void Module::getValue(const std::string& key, std::string& value, std::string default_value)
+{ 
+    PyObject* o = attribute(key, false); 
+    if( o==0){ 
+        value = default_value;
+
+    }else{
+        char* str =PyString_AsString(o);
+        check_error("Module::getValue -- "+key+" not a string type");
+        value = std::string(str);
+    }
+    return;
+}
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+void Module::getList(const std::string& listname, std::vector<std::string>& names)
 {
     PyObject* plist( attribute(listname) )
         , *iterator( PyObject_GetIter(plist) )
@@ -132,7 +222,29 @@ void Module::getList(std::string listname, std::vector<std::string>& names)
     check_error("Module: failure parsing"+ listname);
     
 }
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+void Module::getList(const std::string& listname, std::vector<double>& values)
+{
+    PyObject* plist( attribute(listname) )
+        , *iterator( PyObject_GetIter(plist) )
+        , *item(0);
+    if( iterator==NULL) {
+        throw std::invalid_argument("Module: "+ listname +" is not a list");
+    }
+    if( verbose() ) std::cout << "Parsing list " << listname << std::endl;
+    while (item = PyIter_Next(iterator)) {
+        double value( PyFloat_AsDouble(item) );
+        check_error("Module::parse_list: "+listname + " contains non-numeric item");
+        if( verbose()) std::cout << "\t" << value << std::endl;
+        values.push_back(value);
+        Py_DECREF(item);
+    }
 
+    Py_DECREF(iterator);
+
+    check_error("Module: failure parsing"+ listname);
+    
+}
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 void Module::check_error(const std::string& text)const
 {    if (PyErr_Occurred()) {
@@ -141,7 +253,7 @@ void Module::check_error(const std::string& text)const
     }
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-int Module::test(int argc, char* argv[], std::string modulename)
+int Module::test(int argc, char* argv[], const std::string& modulename)
 {
     int ret(0);
     try{
@@ -151,7 +263,7 @@ int Module::test(int argc, char* argv[], std::string modulename)
       //  Py_SetProgramName(const_cast<char*>((std::string(mypath)+"/python").c_str()));
 
         std::cout << "Test of Module, loading module " << modulename<< std::endl;
-        Module setup("", modulename, "true");
+        Module setup("", modulename, "", true);
 
         std::cout <<"python path: " << Py_GetPath() << std::endl;
         double x;
@@ -161,13 +273,38 @@ int Module::test(int argc, char* argv[], std::string modulename)
         setup.getValue("z", z);  std::cout << "z=" << z << std::endl;
 
         // assume the module imports math, defines pi
-        std::cout << "pi=" << setup["pi"]<< std::endl;
+        try{
+            setup["pi"];  // should fail
+            std::cout << "This should have failed!" << std::endl; 
+            ret = 1;
+        }catch(const std::exception& e){
+            std::cout << "caught exception \""<< e.what() << "\" as expected" << std::endl;
+        }
+
+        setup.getValue("junk", x, 99);
+            if( x!=99) {std::cerr << "failed to set default" << std::endl;
+            ret=1;\
+        }
+        // now check compound 
+        std::cout << "math.pi=" << setup["math.pi"] << std::endl;
 
         std::vector<std::string> names;
         setup.getList("names", names);
 
         std::copy(names.begin(), names.end(), std::ostream_iterator<std::string>(std::cout, ", "));
         std::cout << std::endl;
+
+        // check list of numbers
+        std::vector<double> numbers;
+        setup.getList("values", numbers);
+        std::copy(numbers.begin(), numbers.end(), std::ostream_iterator<double>(std::cout, ", "));
+        std::cout << std::endl;
+
+        // Try a call--get the PyObject that is a function
+        setup.call(setup.attribute("callable"));
+
+        // finally, a local class definition with a few attributes (class variables)
+        std::cout << "Local class: A.a= " << setup["A.a"] << std::endl;
 
     }catch( const std::exception & e){
         std::cerr<< "Module::test -- caught exception " << e.what() << std::endl;
