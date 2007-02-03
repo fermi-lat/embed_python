@@ -1,4 +1,24 @@
 ------------------------------------------------------------
+TAG
+Tag name: v1r1p1, operation: add
+Package: embed_python
+User: jchiang  Sat Feb  3 08:14:36 2007
+Files:
+  embed_python/.cvsignore  1.1.1.1
+  embed_python/ChangeLog  1.1.1.55
+  embed_python/cmt/.cvsignore  1.1.1.1
+  embed_python/cmt/NMake  1.1.1.1
+  embed_python/cmt/requirements  1.12
+  embed_python/doc/release.notes  1.12
+  embed_python/embed_python/Module.h  1.8
+  embed_python/python/.cvsignore  1.1.1.1
+  embed_python/python/Test.py  1.4
+  embed_python/src/mainpage.h  1.1.1.1
+  embed_python/src/Module.cxx  1.11
+  embed_python/src/test/runPy.cxx  1.1.1.1
+
+    *
+------------------------------------------------------------
 User: jchiang  Sat Feb  3 08:13:55 PST 2007
 embed_python/src
 
