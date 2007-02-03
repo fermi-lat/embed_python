@@ -1,7 +1,7 @@
 /** @file Module.cxx
     @brief define Module class
 
-    $Header: /nfs/slac/g/glast/ground/cvs/embed_python/src/Module.cxx,v 1.9 2006/12/14 18:58:33 burnett Exp $
+    $Header: /nfs/slac/g/glast/ground/cvs/embed_python/src/Module.cxx,v 1.10 2006/12/14 21:48:26 lsrea Exp $
 */
 
 #include "embed_python/Module.h"
@@ -68,18 +68,12 @@ Module::Module(const std::string& path, const std::string& module,
     Py_DECREF(sys_dict_setitem);
     Py_DECREF(args);
     Py_DECREF(mylist); 
+    Py_DECREF(m_module);
 
     if (!python_dir.empty()) {
-       // this is equivalent to: 
-       // import sys 
-       // sys.path.insert(0, python_dir)
-       PyObject * sys_path_insert(attribute("path.insert"));
-       args = Py_BuildValue("(is)", 0, python_dir.c_str());
-       call(sys_path_insert, args);
-       Py_DECREF(sys_path_insert);
-       Py_DECREF(args);
+       insert_path(python_dir);
     }
-    Py_DECREF(m_module);
+    insert_path(".");
 
     m_module = PyImport_ImportModule(const_cast<char*>(module.c_str()));
     check_error("Module: error parsing module "+module);
@@ -91,6 +85,16 @@ Module::Module(const std::string& path, const std::string& module,
         _chdir(oldcwd);
     }
 #endif
+}
+
+void Module::insert_path(const std::string & dir) {
+   m_module = PyImport_ImportModule("sys");
+   PyObject * sys_path_insert(attribute("path.insert"));
+   PyObject * args(Py_BuildValue("(is)", 0, dir.c_str()));
+   call(sys_path_insert, args);
+   Py_DECREF(args);
+   Py_DECREF(sys_path_insert);
+   Py_DECREF(m_module);
 }
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

@@ -1,7 +1,7 @@
 /** @file Module.h
     @brief declare Module class
 
-    $Header: /nfs/slac/g/glast/ground/cvs/embed_python/embed_python/Module.h,v 1.6 2006/12/14 18:42:21 burnett Exp $
+    $Header: /nfs/slac/g/glast/ground/cvs/embed_python/embed_python/Module.h,v 1.7 2006/12/14 21:48:26 lsrea Exp $
 */
 #ifndef embed_python_Module_h
 #define embed_python_Module_h
@@ -87,6 +87,8 @@ private:
     bool verbose()const{return m_verbose;}
     void check_error(const std::string& text)const;
     std::string m_root; ///< python path
+
+   void insert_path(const std::string & dir);
 };
 
 }// namespace
