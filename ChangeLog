@@ -1,4 +1,13 @@
 ------------------------------------------------------------
+User: golpa  Thu May 31 12:08:48 PDT 2007
+embed_python/cmt
+
+Modified Files:
+	requirements 
+Log Message:
+Added support for Darwin
+    *
+------------------------------------------------------------
 TAG
 Tag name: v1r1p1, operation: add
 Package: embed_python
