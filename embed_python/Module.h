@@ -1,7 +1,7 @@
 /** @file Module.h
     @brief declare Module class
 
-    $Header: /nfs/slac/g/glast/ground/cvs/embed_python/embed_python/Module.h,v 1.7 2006/12/14 21:48:26 lsrea Exp $
+    $Header: /nfs/slac/g/glast/ground/cvs/embed_python/embed_python/Module.h,v 1.8 2007/02/03 16:13:55 jchiang Exp $
 */
 #ifndef embed_python_Module_h
 #define embed_python_Module_h
@@ -21,10 +21,23 @@ namespace embed_python {
 
     @author T.Burnett
 
+    Acknowledgement: valuable contributions from J. Chiang.
+
 */
 class Module {
 public:
 
+           
+    /// @param python_dir Directory to be prepended to PYTHONPATH
+    /// @param module name of module to load, without ".py". 
+    /// @param argc,argv command-line args: will set sys.argv, which will then be 
+    ///        available in the setup module
+    Module(const std::string & python_dir,
+        const std::string& module, 
+        int argc, char** argv);
+
+    /// @brief This constructor is deprecated! Please don't use. It is here
+    //         to avoid critical notes about breaking interfaces
     /// @param path path to module. If empty, assume cwd
     /// @param module name of module to load, without ".py". 
     /// @param python_dir Directory to be prepended to PYTHONPATH
@@ -32,7 +45,7 @@ public:
     Module(const std::string& path, const std::string& module, 
            const std::string & python_dir="",
            bool verbose=false);
-           
+
     ~Module();
 
     /// return a numeric type
