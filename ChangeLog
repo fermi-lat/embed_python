@@ -1,4 +1,13 @@
 ------------------------------------------------------------
+User: burnett  Sat Jun 16 20:54:21 PDT 2007
+embed_python/cmt
+
+Modified Files:
+	requirements 
+Log Message:
+new ctor with argv use.
+    *
+------------------------------------------------------------
 User: golpa  Thu May 31 12:08:48 PDT 2007
 embed_python/cmt
 
