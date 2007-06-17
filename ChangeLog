@@ -1,5 +1,14 @@
 ------------------------------------------------------------
 User: burnett  Sat Jun 16 20:54:21 PDT 2007
+embed_python/src
+
+Modified Files:
+	Module.cxx 
+Log Message:
+new ctor with argv use.
+    *
+------------------------------------------------------------
+User: burnett  Sat Jun 16 20:54:21 PDT 2007
 embed_python/python
 
 Modified Files:
