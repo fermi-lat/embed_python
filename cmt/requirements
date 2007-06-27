@@ -1,5 +1,10 @@
 package embed_python
 
+version v1r2p1
+author t. burnett <tburnett@u.washington.edu>
+
+#$Id: requirements,v 1.14 2007/06/17 03:54:21 burnett Exp $
+
 use GlastPolicy *
 use python v* IExternal
 
@@ -9,16 +14,19 @@ apply_pattern package_linkopts
 path_append PYTHONPATH $(embed_python_root)/python
 
 
-# have to add this since python does not.
-macro python_linkopts "" WIN32 "$(python_DIR)\libs\$(python_LIB) "
+# have to add this since python does not. (think those Linux guys are needed?)
+macro python_linkopts "" \
+   Linux " -L$(python_DIR)/lib/python2.5/config -lpython2.5 -lpthread -lm -ldl -lutil -rdynamic "\
+   WIN32 "$(python_DIR)\libs\$(python_LIB) "\
+   Darwin " -L$(python_DIR)/lib/python2.5/config -lpython2.5 -lpthread -lm -ldl -lutil -rdynamic "
 
 private
 
-macro src *.cxx WIN32 "*.h *.cxx"
+macro source "*.cxx" WIN32 "*.h *.cxx"
 library embed_python -no_share \
-  -s=../embed_python $(src)\
-  -s=../src $(src)
+  -s=../embed_python $(source)\
+  -s=../src $(source)
 
 macro pysource "" WIN32 "*.py"
-application test_embed_python -s=test $(src)*.cxx\
+application test_embed_python -s=test $(source) \
  -s=../python $(pysource)
