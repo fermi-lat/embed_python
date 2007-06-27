@@ -1,4 +1,13 @@
 ------------------------------------------------------------
+User: jchiang  Wed Jun 27 09:24:58 PDT 2007
+embed_python/cmt
+
+Modified Files:
+	requirements 
+Log Message:
+change hardwired python_linkopts to 2.5; tagging v1r2p1
+    *
+------------------------------------------------------------
 TAG
 Tag name: v1r2, operation: add
 Package: embed_python
