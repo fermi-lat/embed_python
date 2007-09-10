@@ -3,9 +3,10 @@
 
   package embed_python
   Package coordinators: T.Burnett
-$Id: release.notes,v 1.13 2007/06/17 03:54:21 burnett Exp $
+$Id: release.notes,v 1.14 2007/06/27 16:24:59 jchiang Exp $
 
 @verbatim
+  v1r3     10-oct-07  THB Make all access functions const. (An interface change?)
   v1r2p1   27-jun-07  JC  change to python 2.5 in req file python_linkopts macro
   v1r2     16-jun-07  THB Allow command-line args to set sys.argv; new more logical ctor
   v1r1p1   03-Feb-07  JC  insert "." into sys.path so that cwd is used on linux
