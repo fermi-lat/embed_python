@@ -1,5 +1,14 @@
 ------------------------------------------------------------
 User: burnett  Mon Sep 10 13:55:23 PDT 2007
+embed_python/src
+
+Modified Files:
+	Module.cxx 
+Log Message:
+make all access functions const; tag
+    *
+------------------------------------------------------------
+User: burnett  Mon Sep 10 13:55:23 PDT 2007
 embed_python/embed_python
 
 Modified Files:
