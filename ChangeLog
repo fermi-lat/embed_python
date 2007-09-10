@@ -1,4 +1,13 @@
 ------------------------------------------------------------
+User: burnett  Mon Sep 10 13:55:23 PDT 2007
+embed_python/cmt
+
+Modified Files:
+	requirements 
+Log Message:
+make all access functions const; tag
+    *
+------------------------------------------------------------
 TAG
 Tag name: v1r2p1, operation: add
 Package: embed_python
