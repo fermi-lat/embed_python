@@ -1,4 +1,13 @@
 ------------------------------------------------------------
+User: golpa  Thu Sep 27 11:14:45 PDT 2007
+embed_python/src
+
+Modified Files:
+	Module.cxx 
+Log Message:
+use commonUtilities instead of obtaining environment variables directly
+    *
+------------------------------------------------------------
 User: burnett  Mon Sep 10 13:55:23 PDT 2007
 embed_python/src
 
