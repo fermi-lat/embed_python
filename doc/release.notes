@@ -3,9 +3,10 @@
 
   package embed_python
   Package coordinators: T.Burnett
-$Id: release.notes,v 1.14 2007/06/27 16:24:59 jchiang Exp $
+$Id: release.notes,v 1.15 2007/09/10 20:55:23 burnett Exp $
 
 @verbatim
+  v1r3p1   28-jan-08  THB Only to generate a new-style tag
   v1r3     10-oct-07  THB Make all access functions const. (An interface change?)
   v1r2p1   27-jun-07  JC  change to python 2.5 in req file python_linkopts macro
   v1r2     16-jun-07  THB Allow command-line args to set sys.argv; new more logical ctor
