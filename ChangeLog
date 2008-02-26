@@ -1,4 +1,14 @@
 ------------------------------------------------------------
+TAG
+Tag name: v1r3p1, operation: mov
+Package: embed_python
+User: glast  Mon Feb 25 19:08:53 2008
+Files:
+  embed_python/embed_pythonLib.py  1.2
+  embed_python/SConscript  1.2
+
+    *
+------------------------------------------------------------
 User: glastrm  Mon Feb 25 19:06:47 PST 2008
 ScienceTools-scons/embed_python
 
