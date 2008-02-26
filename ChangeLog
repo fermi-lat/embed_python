@@ -1,4 +1,13 @@
 ------------------------------------------------------------
+User: glastrm  Mon Feb 25 19:06:47 PST 2008
+ScienceTools-scons/embed_python
+
+Modified Files:
+	embed_pythonLib.py SConscript 
+Log Message:
+Set lib dependencies up for when building libraries
+    *
+------------------------------------------------------------
 TAG
 Tag name: embed_python-01-03-01, operation: add
 Package: embed_python
