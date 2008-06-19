@@ -1,4 +1,8 @@
-#$Id$
+# -*- python -*-
+# $Id: SConscript,v 1.2 2008/02/26 03:06:47 glastrm Exp $
+# Authors: T. Burnett <tburnett@u.washington.edu>
+# Version: embed_python-01-03-01
+
 Import('baseEnv')
 Import('listFiles')
 progEnv = baseEnv.Clone()
