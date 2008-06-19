@@ -1,4 +1,13 @@
 ------------------------------------------------------------
+User: glastrm  Thu Jun 19 15:25:14 PDT 2008
+ScienceTools-scons/embed_python
+
+Modified Files:
+	SConscript 
+Log Message:
+Added Author and Version fields
+    *
+------------------------------------------------------------
 TAG
 Tag name: embed_python-01-03-01, operation: mov
 Package: embed_python
