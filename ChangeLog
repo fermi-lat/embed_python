@@ -1,4 +1,13 @@
 ------------------------------------------------------------
+User: burnett  Thu Jun 19 19:30:49 PDT 2008
+embed_python
+
+Modified Files:
+	SConscript 
+Log Message:
+
+    *
+------------------------------------------------------------
 TAG
 Tag name: v1r3p1, operation: mov
 Package: embed_python
