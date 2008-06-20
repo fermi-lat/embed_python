@@ -1,5 +1,14 @@
 ------------------------------------------------------------
 User: burnett  Thu Jun 19 19:32:01 PDT 2008
+embed_python/python
+
+Modified Files:
+	Test.py 
+Log Message:
+support for a dictionary of floats --> map<string,douible>
+    *
+------------------------------------------------------------
+User: burnett  Thu Jun 19 19:32:01 PDT 2008
 embed_python/embed_python
 
 Modified Files:
