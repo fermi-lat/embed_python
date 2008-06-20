@@ -1,4 +1,20 @@
 ------------------------------------------------------------
+TAG
+Tag name: v1r4, operation: add
+Package: embed_python
+User: burnett  Thu Jun 19 19:31:16 2008
+Files:
+  embed_python/.cvsignore  1.2
+  embed_python/ChangeLog  1.1.1.85
+  embed_python/SConscript  1.4
+  embed_python/embed_pythonLib.py  1.2
+  embed_python/cmt/.cvsignore  1.1.1.1
+  embed_python/cmt/NMake  1.1.1.1
+  embed_python/python/.cvsignore  1.1.1.1
+  embed_python/src/test/runPy.cxx  1.1.1.1
+
+    *
+------------------------------------------------------------
 User: burnett  Thu Jun 19 19:30:49 PDT 2008
 embed_python
 
