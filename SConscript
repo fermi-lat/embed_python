@@ -1,5 +1,5 @@
 # -*- python -*-
-# $Id: SConscript,v 1.2 2008/02/26 03:06:47 glastrm Exp $
+# $Header$
 # Authors: T. Burnett <tburnett@u.washington.edu>
 # Version: embed_python-01-03-01
 
