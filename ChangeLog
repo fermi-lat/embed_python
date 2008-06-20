@@ -1,4 +1,13 @@
 ------------------------------------------------------------
+User: burnett  Thu Jun 19 19:32:01 PDT 2008
+embed_python/cmt
+
+Modified Files:
+	requirements 
+Log Message:
+support for a dictionary of floats --> map<string,douible>
+    *
+------------------------------------------------------------
 TAG
 Tag name: v1r4, operation: add
 Package: embed_python
