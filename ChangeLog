@@ -1,5 +1,14 @@
 ------------------------------------------------------------
 User: burnett  Sat Jun 28 13:13:43 PDT 2008
+embed_python/src
+
+Modified Files:
+	Module.cxx 
+Log Message:
+add more dictionary support; tag
+    *
+------------------------------------------------------------
+User: burnett  Sat Jun 28 13:13:43 PDT 2008
 embed_python/embed_python
 
 Modified Files:
