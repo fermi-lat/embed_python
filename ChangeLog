@@ -1,4 +1,12 @@
 ------------------------------------------------------------
+User: glastrm  Sat Jun 28 13:30:37 PDT 2008
+embed_python
+
+Modified Files:
+	SConscript 
+Log Message:
+    *
+------------------------------------------------------------
 TAG
 Tag name: v1r5, operation: add
 Package: embed_python
