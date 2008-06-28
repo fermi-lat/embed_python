@@ -1,4 +1,13 @@
 ------------------------------------------------------------
+User: burnett  Sat Jun 28 13:13:43 PDT 2008
+embed_python/cmt
+
+Modified Files:
+	requirements 
+Log Message:
+add more dictionary support; tag
+    *
+------------------------------------------------------------
 TAG
 Tag name: v1r4, operation: mov
 Package: embed_python
