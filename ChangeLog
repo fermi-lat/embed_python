@@ -1,45 +1,5 @@
 ------------------------------------------------------------
 TAG
-Tag name: v1r5p1, operation: add
-Package: embed_python
-User: heather  Thu Oct 30 07:18:47 2008
-Files:
-  embed_python/.cvsignore  1.2
-  embed_python/ChangeLog  1.1.1.138
-  embed_python/SConscript  1.6
-  embed_python/embed_pythonLib.py  1.2
-  embed_python/cmt/.cvsignore  1.1.1.1
-  embed_python/cmt/NMake  1.1.1.1
-  embed_python/cmt/requirements  1.20
-  embed_python/doc/release.notes  1.19
-  embed_python/embed_python/Module.h  1.12
-  embed_python/python/.cvsignore  1.1.1.1
-  embed_python/python/Test.py  1.6
-  embed_python/src/mainpage.h  1.2
-  embed_python/src/Module.cxx  1.17
-  embed_python/src/test/runPy.cxx  1.1.1.1
-
-    *
-------------------------------------------------------------
-User: heather  Thu Oct 30 07:18:35 PDT 2008
-embed_python/doc
-
-Modified Files:
-	release.notes 
-Log Message:
-move to python_PATH
-    *
-------------------------------------------------------------
-User: heather  Thu Oct 30 07:18:35 PDT 2008
-embed_python/cmt
-
-Modified Files:
-	requirements 
-Log Message:
-move to python_PATH
-    *
-------------------------------------------------------------
-TAG
 Tag name: ScienceTools-09-06-00, operation: del
 Package: embed_python
 User: glastrm  Wed Sep 17 13:18:17 2008
