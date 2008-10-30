@@ -1,4 +1,13 @@
 ------------------------------------------------------------
+User: heather  Thu Oct 30 07:18:35 PDT 2008
+embed_python/cmt
+
+Modified Files:
+	requirements 
+Log Message:
+move to python_PATH
+    *
+------------------------------------------------------------
 TAG
 Tag name: ScienceTools-09-06-00, operation: del
 Package: embed_python
