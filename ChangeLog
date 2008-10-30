@@ -1,4 +1,13 @@
 ------------------------------------------------------------
+TAG
+Tag name: v1r5p1, operation: mov
+Package: embed_python
+User: glastrm  Thu Oct 30 07:30:55 2008
+Files:
+  embed_python/SConscript  1.7
+
+    *
+------------------------------------------------------------
 User: glastrm  Thu Oct 30 07:30:49 PDT 2008
 embed_python
 
