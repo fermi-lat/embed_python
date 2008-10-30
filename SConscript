@@ -1,7 +1,7 @@
 # -*- python -*-
-# $Header: /nfs/slac/g/glast/ground/cvs/embed_python/SConscript,v 1.5 2008/06/20 18:46:32 glast Exp $
+# $Header: /nfs/slac/g/glast/ground/cvs/embed_python/SConscript,v 1.6 2008/06/28 20:30:37 glastrm Exp $
 # Authors: T. Burnett <tburnett@u.washington.edu>
-# Version: embed_python-01-05-00
+# Version: embed_python-01-05-01
 
 Import('baseEnv')
 Import('listFiles')
