@@ -1,5 +1,14 @@
 ------------------------------------------------------------
 User: burnett  Tue Dec 30 09:47:23 PST 2008
+embed_python/src
+
+Modified Files:
+	Module.cxx 
+Log Message:
+change a critical int to long. (??) and tag
+    *
+------------------------------------------------------------
+User: burnett  Tue Dec 30 09:47:23 PST 2008
 embed_python/doc
 
 Modified Files:
