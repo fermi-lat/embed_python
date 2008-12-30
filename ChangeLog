@@ -1,4 +1,13 @@
 ------------------------------------------------------------
+User: burnett  Tue Dec 30 09:47:22 PST 2008
+embed_python/cmt
+
+Modified Files:
+	requirements 
+Log Message:
+change a critical int to long. (??) and tag
+    *
+------------------------------------------------------------
 TAG
 Tag name: ScienceTools-09-09-00, operation: add
 Package: embed_python
