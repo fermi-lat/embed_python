@@ -3,9 +3,10 @@
 
   package embed_python
   Package coordinators: T.Burnett
-$Id: release.notes,v 1.18 2008/06/28 20:13:43 burnett Exp $
+$Id: release.notes,v 1.19 2008/10/30 14:18:35 heather Exp $
 
 @verbatim
+  v1r5p2   30-dec-08  THB Fix 64bit system problem, found by Jon Vernaleo
   v1r5p1   30-oct-08  HMK move to python_PATH from python_DIR to migrate to
            new external directory structure
   v1r5     28-jun-08  THB Add dictionary of vectors of doubles  support
