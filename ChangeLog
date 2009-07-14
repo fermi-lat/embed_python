@@ -1,5 +1,19 @@
 ------------------------------------------------------------
 User: jrb  Tue Jul 14 14:50:50 PDT 2009
+ScienceTools-scons/embed_python/python
+
+Added Files:
+	embed_python_Test.py 
+Log Message:
+SConscript: use registerTargets rather than registerObjects
+            register python module needed by test program
+embed_python_Test.py:  copy of Test.py with less generic name, suitable
+                       for installing
+runPy.cxx:  reference embed_python_Test rather than Test
+
+    *
+------------------------------------------------------------
+User: jrb  Tue Jul 14 14:50:50 PDT 2009
 ScienceTools-scons/embed_python
 
 Modified Files:
