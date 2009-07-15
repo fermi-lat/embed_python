@@ -1,4 +1,13 @@
 ------------------------------------------------------------
+User: jrb  Wed Jul 15 10:30:44 PDT 2009
+embed_python/cmt
+
+Modified Files:
+	requirements 
+Log Message:
+Added new line - version v1r5p3
+    *
+------------------------------------------------------------
 TAG
 Tag name: ScienceTools-09-15-03, operation: add
 Package: embed_python
