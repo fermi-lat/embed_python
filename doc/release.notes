@@ -3,9 +3,13 @@
 
   package embed_python
   Package coordinators: T.Burnett
-$Id: release.notes,v 1.19 2008/10/30 14:18:35 heather Exp $
+$Id: release.notes,v 1.20 2008/12/30 17:47:23 burnett Exp $
 
 @verbatim
+
+      * EOH *
+  v1r5p3   15-jul-09  jrb 1. Update SConscript 2. Mods to get test program to run
+                          with SCons RM
   v1r5p2   30-dec-08  THB Fix 64bit system problem, found by Jon Vernaleo
   v1r5p1   30-oct-08  HMK move to python_PATH from python_DIR to migrate to
            new external directory structure
