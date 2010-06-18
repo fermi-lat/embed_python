@@ -2,6 +2,14 @@
 TAG
 Tag name: ScienceTools-09-17-00, operation: add
 Package: embed_python
+User: glastrm  Thu Jun 17 18:42:52 2010
+Files:
+
+    *
+------------------------------------------------------------
+TAG
+Tag name: ScienceTools-09-17-00, operation: add
+Package: embed_python
 User: glastrm  Mon Jun 14 21:43:37 2010
 Files:
   embed_python/.cvsignore  1.3
