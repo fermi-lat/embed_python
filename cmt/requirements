@@ -1,9 +1,9 @@
 package embed_python
 
-version v1r5p4
+version v1r5p5
 author t. burnett <tburnett@u.washington.edu>
 
-#$Id: requirements,v 1.22 2009/07/15 17:30:44 jrb Exp $
+#$Id: requirements,v 1.23 2010/02/22 20:47:44 jrb Exp $
 
 use GlastPolicy *
 use python v* IExternal
