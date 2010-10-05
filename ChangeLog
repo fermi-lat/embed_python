@@ -1,4 +1,15 @@
 ------------------------------------------------------------
+User: jrb  Tue Oct  5 12:24:18 PDT 2010
+ScienceTools-scons/embed_python
+
+Modified Files:
+	embed_pythonLib.py 
+Log Message:
+Add -rdynamic link option to environment when linking against this library
+on Linux
+
+    *
+------------------------------------------------------------
 TAG
 Tag name: ScienceTools-09-18-04, operation: add
 Package: embed_python
