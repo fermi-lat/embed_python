@@ -1,5 +1,28 @@
 ------------------------------------------------------------
 TAG
+Tag name: ScienceTools-09-18-05, operation: add
+Package: embed_python
+User: glastrm  Tue Oct  5 18:12:34 2010
+Files:
+  embed_python/.cvsignore  1.3
+  embed_python/ChangeLog  1.1.1.199
+  embed_python/SConscript  1.13
+  embed_python/embed_pythonLib.py  1.3
+  embed_python/cmt/.cvsignore  1.1.1.1
+  embed_python/cmt/NMake  1.1.1.1
+  embed_python/cmt/requirements  1.24
+  embed_python/doc/release.notes  1.23
+  embed_python/embed_python/Module.h  1.12
+  embed_python/python/.cvsignore  1.1.1.1
+  embed_python/python/embed_python_Test.py  1.1
+  embed_python/python/Test.py  1.6
+  embed_python/src/mainpage.h  1.2
+  embed_python/src/Module.cxx  1.18
+  embed_python/src/test/runPy.cxx  1.2
+
+    *
+------------------------------------------------------------
+TAG
 Tag name: embed_python-01-05-05, operation: add
 Package: embed_python
 User: jrb  Tue Oct  5 12:25:07 2010
