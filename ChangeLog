@@ -2,6 +2,14 @@
 TAG
 Tag name: GlastRelease-19-03-07, operation: add
 Package: embed_python
+User: heather  Wed Sep  7 10:14:02 2011
+Files:
+
+    *
+------------------------------------------------------------
+TAG
+Tag name: GlastRelease-19-03-07, operation: add
+Package: embed_python
 User: heather  Fri Sep  2 19:49:47 2011
 Files:
   embed_python/.cvsignore  1.3
