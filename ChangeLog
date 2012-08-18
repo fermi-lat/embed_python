@@ -1,4 +1,13 @@
 ------------------------------------------------------------
+User: jrb  Fri Aug 17 17:25:09 PDT 2012
+GlastRelease-scons/embed_python
+
+Modified Files:
+	embed_pythonLib.py 
+Log Message:
+support no-install headers on Windows
+    *
+------------------------------------------------------------
 TAG
 Tag name: GlastRelease-20-04-02, operation: add
 Package: embed_python
