@@ -1,4 +1,31 @@
 ------------------------------------------------------------
+User: jrb  Mon Aug 20 11:57:41 PDT 2012
+embed_python/cmt
+
+Modified Files:
+	requirements 
+Log Message:
+stag/GoGui_auto-tag
+    *
+------------------------------------------------------------
+User: jrb  Mon Aug 20 11:57:41 PDT 2012
+embed_python/doc
+
+Modified Files:
+	release.notes 
+Log Message:
+stag/GoGui_auto-tag
+    *
+------------------------------------------------------------
+User: jrb  Mon Aug 20 11:57:41 PDT 2012
+embed_python
+
+Modified Files:
+	SConscript 
+Log Message:
+stag/GoGui_auto-tag
+    *
+------------------------------------------------------------
 User: jrb  Fri Aug 17 17:25:09 PDT 2012
 GlastRelease-scons/embed_python
 
