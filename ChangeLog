@@ -2,6 +2,14 @@
 TAG
 Tag name: GlastRelease-20-04-02-gr01, operation: add
 Package: embed_python
+User: heather  Tue Aug 28 05:18:32 2012
+Files:
+
+    *
+------------------------------------------------------------
+TAG
+Tag name: GlastRelease-20-04-02-gr01, operation: add
+Package: embed_python
 User: heather  Mon Aug 27 22:26:32 2012
 Files:
   embed_python/.cvsignore  1.3
