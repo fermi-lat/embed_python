@@ -2,6 +2,14 @@
 TAG
 Tag name: GlastRelease-17-35-24-lp39, operation: add
 Package: embed_python
+User: heather  Wed Oct 17 05:56:47 2012
+Files:
+
+    *
+------------------------------------------------------------
+TAG
+Tag name: GlastRelease-17-35-24-lp39, operation: add
+Package: embed_python
 User: heather  Wed Oct 17 05:44:47 2012
 Files:
   embed_python/.cvsignore  1.3
