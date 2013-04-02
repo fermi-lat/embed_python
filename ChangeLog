@@ -1,4 +1,13 @@
 ------------------------------------------------------------
+User: jchiang  Mon Apr  1 23:01:30 PDT 2013
+embed_python
+
+Modified Files:
+	SConscript 
+Log Message:
+stag/GoGui_auto-tag
+    *
+------------------------------------------------------------
 User: jchiang  Mon Apr  1 22:56:34 PDT 2013
 ScienceTools-scons/embed_python/src
 
