@@ -1,5 +1,14 @@
 ------------------------------------------------------------
 User: jchiang  Mon Apr  1 22:56:34 PDT 2013
+ScienceTools-scons/embed_python/python
+
+Modified Files:
+	embed_python_Test.py 
+Log Message:
+add Module::getDict() access for map<string, vector<string> >
+    *
+------------------------------------------------------------
+User: jchiang  Mon Apr  1 22:56:34 PDT 2013
 ScienceTools-scons/embed_python/embed_python
 
 Modified Files:
