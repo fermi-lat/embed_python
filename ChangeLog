@@ -1,4 +1,13 @@
 ------------------------------------------------------------
+User: jchiang  Mon Apr  1 22:56:34 PDT 2013
+ScienceTools-scons/embed_python/embed_python
+
+Modified Files:
+	Module.h 
+Log Message:
+add Module::getDict() access for map<string, vector<string> >
+    *
+------------------------------------------------------------
 TAG
 Tag name: GlastRelease-20-08-11, operation: add
 Package: embed_python
