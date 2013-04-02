@@ -1,7 +1,7 @@
 /** @file Module.h
     @brief declare Module class
 
-    $Header: /nfs/slac/g/glast/ground/cvs/embed_python/embed_python/Module.h,v 1.11 2008/06/20 02:32:01 burnett Exp $
+    $Header: /nfs/slac/g/glast/ground/cvs/ScienceTools-scons/embed_python/embed_python/Module.h,v 1.12 2008/06/28 20:13:43 burnett Exp $
 */
 #ifndef embed_python_Module_h
 #define embed_python_Module_h
@@ -78,6 +78,10 @@ public:
 
     /// set a map of list of doubles from a dictionary
     void getDict(const std::string& dictname, std::map<std::string,std::vector<double> >& valuemap)const;
+
+    /// get a map of vector of strings from a dictionary
+   void getDict(const std::string & dictname,
+                std::map<std::string, std::vector<std::string> > & valuemap) const;
 
     /// examine type of a PyObject
     std::string type(const PyObject* obj)const;
