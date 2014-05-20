@@ -3,12 +3,13 @@
 
   package embed_python
   Package coordinators: T.Burnett
-$Id: release.notes,v 1.24 2012/08/20 18:57:41 jrb Exp $
+$Id: release.notes,v 1.25 2013/04/02 06:01:30 jchiang Exp $
 
 @verbatim
 
       * EOH *
 
+ embed_python-01-07-01 20-May-2014 glastrm Changed #include order in Module.cxx to allow for proper compilation on Mountain Lion
  embed_python-01-07-00 01-Apr-2013 jchiang add getDict access for map of vector of strings
  embed_python-01-06-00 20-Aug-2012    jrb for Windows no-install-headers
  embed_python-01-05-05 05-Oct-2010    jrb Add -rdynamic link flag to environment of users (Linux only)
