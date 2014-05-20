@@ -1,7 +1,7 @@
 /** @file Module.cxx
     @brief define Module class
 
-    $Header: /nfs/slac/g/glast/ground/cvs/ScienceTools-scons/embed_python/src/Module.cxx,v 1.18 2008/12/30 17:47:23 burnett Exp $
+    $Header: /nfs/slac/g/glast/ground/cvs/ScienceTools-scons/embed_python/src/Module.cxx,v 1.19 2013/04/02 05:56:34 jchiang Exp $
 */
 
 #include "embed_python/Module.h"
@@ -9,10 +9,11 @@
 #ifdef _DEBUG
 #undef _DEBUG /* Link with python24.lib and not python24_d.lib */ 
 #endif
+#include <iostream>
+
 #include <Python.h>
 
 #include <stdexcept>
-#include <iostream>
 #include <iomanip>
 #include <algorithm>
 #include <iterator>
