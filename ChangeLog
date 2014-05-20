@@ -1,4 +1,13 @@
 ------------------------------------------------------------
+User: tstephen  Tue May 20 15:31:32 PDT 2014
+ScienceTools-scons/embed_python/src
+
+Modified Files:
+	Module.cxx 
+Log Message:
+Moved #include <iostream> ahead of #include <Python.h> in order to allow for proper compilation on OS X Mountain Lion.
+    *
+------------------------------------------------------------
 TAG
 Tag name: ScienceTools-09-33-01, operation: add
 Package: embed_python
