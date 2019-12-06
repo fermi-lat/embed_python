@@ -82,7 +82,7 @@ Module::Module(const std::string& path, const std::string& module,
     check_error("Module: error parsing module "+module);
    
     if( verbose() ) std::cout << "Read python module "
-        << PyString_AsString(attribute("__file__"))<<std::endl;
+        << PyBytes_AsString(attribute("__file__"))<<std::endl;
 
 }
 Module::Module(const std::string & python_dir,
@@ -188,7 +188,7 @@ void Module::getValue(const std::string& key, int& value, int default_value)cons
         value = default_value;
 
     }else{
-        value =PyInt_AsLong(o);
+        value =PyLong_AsLong(o);
         check_error("Module::getValue -- "+key+" not an integer type"); 
     }
     return;
@@ -216,7 +216,7 @@ void Module::getValue(const std::string& key, double& value, double default_valu
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 void Module::getValue(const std::string& key, std::string& value)const
 { 
-    char * str = PyString_AsString(attribute(key));
+    char * str = PyBytes_AsString(attribute(key));
     check_error("Module::getValue-- "+key+" not a string type");
     value = std::string(str);
     return;
@@ -230,7 +230,7 @@ void Module::getValue(const std::string& key, std::string& value, std::string de
         value = default_value;
 
     }else{
-        char* str =PyString_AsString(o);
+        char* str =PyBytes_AsString(o);
         check_error("Module::getValue -- "+key+" not a string type");
         value = std::string(str);
     }
@@ -248,7 +248,7 @@ void Module::getList(const std::string& listname, std::vector<std::string>& name
     }
     if( verbose() ) std::cout << "Parsing list " << listname << std::endl;
     while (item = PyIter_Next(iterator)) {
-        char * name (PyString_AsString(item) );
+        char * name (PyBytes_AsString(item) );
         check_error("Module::parse_list: "+listname + " contains non-string item");
         if( verbose()) std::cout << "\t" << name << std::endl;
         names.push_back(name);
@@ -297,7 +297,7 @@ void Module::getDict(const std::string& dictname, std::map<std::string,double>& 
 
     while (PyDict_Next(pdict, &pos, &key, &value)) {
         double dvalue = PyFloat_AsDouble(value);
-        std::string skey = PyString_AsString(key);
+        std::string skey = PyBytes_AsString(key);
         valuemap[skey]=dvalue;
     }
 
@@ -319,7 +319,7 @@ void Module::getDict(const std::string& dictname, std::map<std::string,std::vect
     Py_ssize_t pos = 0;
 
     while (PyDict_Next(pdict, &pos, &key, &values)) {
-        std::string skey = PyString_AsString(key);
+        std::string skey = PyBytes_AsString(key);
         PyObject *list_iterator( PyObject_GetIter(values) );
         if( list_iterator==NULL) {
             throw std::invalid_argument("Module: dictionary value for "+ skey +" is not a list");
@@ -354,14 +354,14 @@ void Module::getDict(const std::string & dictname,
    Py_ssize_t pos(0);
 
    while (PyDict_Next(pdict, &pos, &key, &values)) {
-      std::string skey = PyString_AsString(key);
+      std::string skey = PyBytes_AsString(key);
       PyObject *list_iterator( PyObject_GetIter(values) );
       if (list_iterator==NULL) {
          throw std::invalid_argument("Module: dictionary value for "+ skey +" is not a list");
       }
       std::vector<std::string> v;
       while (PyObject* item = PyIter_Next(list_iterator)) {
-         std::string value(PyString_AsString(item));
+         std::string value(PyBytes_AsString(item));
          check_error("Module::getDict: dictionary " + dictname + "["+ skey + "] contains non-string item");
          if (verbose()) {
             std::cout << "\t" << value << std::endl;
