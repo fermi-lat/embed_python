@@ -1,4 +1,4 @@
-print "this is embed_python_Test.py"
+print ("this is embed_python_Test.py")
 # see if this works
 import math
 
@@ -9,7 +9,7 @@ names = ['one', 'two', 'three']
 values = range(5)
 
 def callable():
-    print "callable function was called!"
+    print ("callable function was called!")
 
 #define a few attributes
 x=99.
@@ -29,9 +29,9 @@ mymap = {'a':1, 'b':2.0}
 
 stringlistdict = dict(A=['a', 'aa'], B=['b', 'bb'])
     
-print 'directory ', dir()
-print
+print ('directory ', dir())
+print ()
 # check that the argv array was passed
 import sys
-print 'sys.argv %s' % sys.argv
+print ('sys.argv %s' % sys.argv)
     
