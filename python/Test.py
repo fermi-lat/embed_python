@@ -1,4 +1,4 @@
-print "this is Test.py"
+print ("this is Test.py")
 import math # see if this works
 
 # make a list of strings
@@ -8,7 +8,7 @@ names = ['one', 'two', 'three']
 values = range(5)
 
 def callable():
-    print "callable function was called!"
+    print ("callable function was called!")
 
 #define a few attributes
 x=99.
@@ -24,9 +24,9 @@ class A(object):
 
 mymap = {'a':1, 'b':2.0}
     
-print 'directory ', dir()
-print
+print ('directory ', dir())
+print()
 # check that the argv array was passed
 import sys
-print 'sys.argv %s' % sys.argv
+print ('sys.argv %s' % sys.argv)
     
