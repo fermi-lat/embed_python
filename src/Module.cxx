@@ -82,7 +82,7 @@ Module::Module(const std::string& path, const std::string& module,
     check_error("Module: error parsing module "+module);
    
     if( verbose() ) std::cout << "Read python module "
-        << PyBytes_AsString(attribute("__file__"))<<std::endl;
+        << PyUnicode_AsUTF8(attribute("__file__"))<<std::endl;
 
 }
 Module::Module(const std::string & python_dir,
