@@ -216,7 +216,7 @@ void Module::getValue(const std::string& key, double& value, double default_valu
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 void Module::getValue(const std::string& key, std::string& value)const
 { 
-    char * str = PyUnicode_AsUTF8(attribute(key));
+    const char * str = PyUnicode_AsUTF8(attribute(key));
     check_error("Module::getValue-- "+key+" not a string type");
     value = std::string(str);
     return;
@@ -230,7 +230,7 @@ void Module::getValue(const std::string& key, std::string& value, std::string de
         value = default_value;
 
     }else{
-        char* str = PyUnicode_AsUTF8(o);
+        const char* str = PyUnicode_AsUTF8(o);
         check_error("Module::getValue -- "+key+" not a string type");
         value = std::string(str);
     }
@@ -248,7 +248,7 @@ void Module::getList(const std::string& listname, std::vector<std::string>& name
     }
     if( verbose() ) std::cout << "Parsing list " << listname << std::endl;
     while (item = PyIter_Next(iterator)) {
-        char * name (PyUnicode_AsUTF8(item) );
+        const char * name = PyUnicode_AsUTF8(item);
         check_error("Module::parse_list: "+listname + " contains non-string item");
         if( verbose()) std::cout << "\t" << name << std::endl;
         names.push_back(name);
