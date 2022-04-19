@@ -10,3 +10,17 @@ target_link_libraries(embed_python PUBLIC Python3::Python)
 
 add_executable(test_embed_python src/test/runPy.cxx)
 target_link_libraries(test_embed_python PRIVATE embed_python)
+
+###############################################################
+# Installation
+###############################################################
+install(DIRECTORY embed_python DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+
+install(
+  TARGETS embed_python
+  # EXPORT fermiTargets
+  RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+  LIBRARY DESTINATION lib
+  ARCHIVE DESTINATION lib
+  INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+)
