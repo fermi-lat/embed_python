@@ -18,7 +18,7 @@ install(DIRECTORY embed_python DESTINATION ${FERMI_INSTALL_INCLUDEDIR})
 install(DIRECTORY python/ DESTINATION ${PYTHON_SITE_PKGDIR})
 
 install(
-  TARGETS embed_python
+  TARGETS embed_python test_embed_python
   # EXPORT fermiTargets
   RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
   LIBRARY DESTINATION lib
