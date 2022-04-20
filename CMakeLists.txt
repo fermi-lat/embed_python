@@ -14,7 +14,8 @@ target_link_libraries(test_embed_python PRIVATE embed_python)
 ###############################################################
 # Installation
 ###############################################################
-install(DIRECTORY embed_python DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+install(DIRECTORY embed_python DESTINATION ${FERMI_INSTALL_INCLUDEDIR})
+install(DIRECTORY python/ DESTINATION ${PYTHON_SITE_PKGDIR})
 
 install(
   TARGETS embed_python
