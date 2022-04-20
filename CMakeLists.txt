@@ -15,7 +15,7 @@ target_link_libraries(test_embed_python PRIVATE embed_python)
 # Installation
 ###############################################################
 install(DIRECTORY embed_python DESTINATION ${FERMI_INSTALL_INCLUDEDIR})
-install(DIRECTORY python/ DESTINATION ${PYTHON_SITE_PKGDIR})
+install(DIRECTORY python/ DESTINATION ${FERMI_INSTALL_PYTHON})
 
 install(
   TARGETS embed_python test_embed_python
