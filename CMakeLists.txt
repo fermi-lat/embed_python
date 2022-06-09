@@ -1,4 +1,4 @@
-add_library(embed_python STATIC src/Module.cxx)
+add_library(embed_python src/Module.cxx)
 
 target_include_directories(
   embed_python PUBLIC
