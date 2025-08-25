@@ -8,6 +8,8 @@ target_include_directories(
 
 target_link_libraries(embed_python PUBLIC Python3::Python)
 
+set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
+
 add_executable(test_embed_python src/test/runPy.cxx)
 target_link_libraries(test_embed_python PRIVATE embed_python)
 
