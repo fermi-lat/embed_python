@@ -24,8 +24,8 @@
 #else
 # include <unistd.h>
 namespace {
-    int _chdir( const char * d){return ::chdir(d);}
-    char * _getcwd(  char * buffer,   size_t maxlen ){return ::getcwd(buffer, maxlen);}
+    auto _chdir( const char * d) -> int{return ::chdir(d);}
+    auto _getcwd(  char * buffer,   size_t maxlen ) -> char *{return ::getcwd(buffer, maxlen);}
 }
 #endif
 
@@ -132,12 +132,12 @@ void Module::insert_path(const std::string & dir) {
 }
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-std::string Module::type(const PyObject* o)const{
+auto Module::type(const PyObject* o)const -> std::string{
     return o->ob_type->tp_name;
 }
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-PyObject* Module::call(PyObject* o, PyObject* args)const
+auto Module::call(PyObject* o, PyObject* args)const -> PyObject*
 {
     PyObject* ret = PyObject_CallObject(o, args);
     check_error("Module::call failed");
@@ -151,7 +151,7 @@ Module::~Module()
     Py_Finalize();
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-PyObject* Module::attribute(const std::string& name, bool check)const
+auto Module::attribute(const std::string& name, bool check)const -> PyObject*
 {
     unsigned long c (name.find_first_of("."));
     if( c != std::string::npos) {
@@ -166,7 +166,7 @@ PyObject* Module::attribute(const std::string& name, bool check)const
 }
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-double Module::operator[](const std::string& key)const
+auto Module::operator[](const std::string& key)const -> double
 { 
     PyObject* obj = attribute(key);
     double dval (PyFloat_AsDouble(obj));
@@ -384,7 +384,7 @@ void Module::check_error(const std::string& text)const
     }
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-int Module::test(int argc, char* argv[], const std::string& modulename)
+auto Module::test(int argc, char* argv[], const std::string& modulename) -> int
 {
     int ret(0);
     try{

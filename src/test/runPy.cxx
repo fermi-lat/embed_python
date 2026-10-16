@@ -6,8 +6,8 @@
 #include <stdexcept>
 
 
-int
-main(int argc, char *argv[])
+auto
+main(int argc, char *argv[]) -> int
 {
   //    return embed_python::Module::test(argc, argv, "Test");
     return embed_python::Module::test(argc, argv, "embed_python_Test");
