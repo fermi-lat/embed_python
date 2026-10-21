@@ -11,6 +11,7 @@
 #endif
 #include <iostream>
 
+#define Py_LIMITED_API 0x03080000
 #include <Python.h>
 
 #include <stdexcept>
