@@ -11,7 +11,10 @@
 #endif
 #include <iostream>
 
+// Use only the Python stable ABI. The build normally defines this; keep a fallback for standalone builds.
+#ifndef Py_LIMITED_API
 #define Py_LIMITED_API 0x03080000
+#endif
 #include <Python.h>
 
 #include <stdexcept>
@@ -32,6 +35,17 @@ namespace {
 
 namespace {
     bool initialized(false);
+
+    // Convert a Python str to UTF-8. PyUnicode_AsUTF8 is not in the limited API before 3.13, so go through bytes.
+    // On failure, return an empty string and leave the Python error set for check_error to report.
+    std::string to_utf8(PyObject * o) {
+        if (o == 0) return std::string();
+        PyObject * bytes(PyUnicode_AsUTF8String(o));
+        if (bytes == 0) return std::string();
+        std::string ret(PyBytes_AsString(bytes));
+        Py_DECREF(bytes);
+        return ret;
+    }
 }
 
 using namespace embed_python;
@@ -83,7 +97,7 @@ Module::Module(const std::string& path, const std::string& module,
     check_error("Module: error parsing module "+module);
    
     if( verbose() ) std::cout << "Read python module "
-        << PyUnicode_AsUTF8(attribute("__file__"))<<std::endl;
+        << to_utf8(attribute("__file__"))<<std::endl;
 
 }
 Module::Module(const std::string & python_dir,
@@ -134,7 +148,11 @@ void Module::insert_path(const std::string & dir) {
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 std::string Module::type(const PyObject* o)const{
-    return o->ob_type->tp_name;
+    // PyTypeObject is opaque in the limited API, so ask the type object for its __name__.
+    PyObject * name(PyObject_GetAttrString(reinterpret_cast<PyObject*>(Py_TYPE(const_cast<PyObject*>(o))), "__name__"));
+    std::string ret(to_utf8(name));
+    Py_XDECREF(name);
+    return ret;
 }
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -217,9 +235,9 @@ void Module::getValue(const std::string& key, double& value, double default_valu
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 void Module::getValue(const std::string& key, std::string& value)const
 { 
-    const char * str = PyUnicode_AsUTF8(attribute(key));
+    std::string str(to_utf8(attribute(key)));
     check_error("Module::getValue-- "+key+" not a string type");
-    value = std::string(str);
+    value = str;
     return;
 }
 
@@ -231,9 +249,9 @@ void Module::getValue(const std::string& key, std::string& value, std::string de
         value = default_value;
 
     }else{
-        const char* str = PyUnicode_AsUTF8(o);
+        std::string str(to_utf8(o));
         check_error("Module::getValue -- "+key+" not a string type");
-        value = std::string(str);
+        value = str;
     }
     return;
 }
@@ -249,7 +267,7 @@ void Module::getList(const std::string& listname, std::vector<std::string>& name
     }
     if( verbose() ) std::cout << "Parsing list " << listname << std::endl;
     while (item = PyIter_Next(iterator)) {
-        const char * name = PyUnicode_AsUTF8(item);
+        std::string name(to_utf8(item));
         check_error("Module::parse_list: "+listname + " contains non-string item");
         if( verbose()) std::cout << "\t" << name << std::endl;
         names.push_back(name);
@@ -298,7 +316,7 @@ void Module::getDict(const std::string& dictname, std::map<std::string,double>& 
 
     while (PyDict_Next(pdict, &pos, &key, &value)) {
         double dvalue = PyFloat_AsDouble(value);
-        std::string skey = PyUnicode_AsUTF8(key);
+        std::string skey = to_utf8(key);
         valuemap[skey]=dvalue;
     }
 
@@ -320,7 +338,7 @@ void Module::getDict(const std::string& dictname, std::map<std::string,std::vect
     Py_ssize_t pos = 0;
 
     while (PyDict_Next(pdict, &pos, &key, &values)) {
-        std::string skey = PyUnicode_AsUTF8(key);
+        std::string skey = to_utf8(key);
         PyObject *list_iterator( PyObject_GetIter(values) );
         if( list_iterator==NULL) {
             throw std::invalid_argument("Module: dictionary value for "+ skey +" is not a list");
@@ -355,14 +373,14 @@ void Module::getDict(const std::string & dictname,
    Py_ssize_t pos(0);
 
    while (PyDict_Next(pdict, &pos, &key, &values)) {
-      std::string skey = PyUnicode_AsUTF8(key);
+      std::string skey = to_utf8(key);
       PyObject *list_iterator( PyObject_GetIter(values) );
       if (list_iterator==NULL) {
          throw std::invalid_argument("Module: dictionary value for "+ skey +" is not a list");
       }
       std::vector<std::string> v;
       while (PyObject* item = PyIter_Next(list_iterator)) {
-         std::string value(PyUnicode_AsUTF8(item));
+         std::string value(to_utf8(item));
          check_error("Module::getDict: dictionary " + dictname + "["+ skey + "] contains non-string item");
          if (verbose()) {
             std::cout << "\t" << value << std::endl;
