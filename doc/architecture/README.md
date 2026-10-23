@@ -48,7 +48,7 @@ loads a Python event-class script (e.g. `Pass4_Classifier.py`). `st_graph`
 | Depends on | Python 3 (external) | `Python3::Python`, linked `PUBLIC`, so every consumer links libpython. No Fermi package dependencies. |
 | Used by | `fitsGen` | `fitsGen/EventClassifier.h` holds an `embed_python::Module *`. `EventClassifier` (in `libfitsGen`) imports the classifier script and calls its `eventClassifier` function for each event. `fitsGen` links embed_python `PUBLIC`. In the CMake build, `EventClassifier` is exercised only by `test_fitsGen`. `observationSim` links `fitsGen` but does not use `EventClassifier`, though it still links libpython transitively. `makeFT1`, the tool that originally used it, is not built by CMake. |
 | Linked but unused | `st_graph` | `target_link_libraries(st_graph PRIVATE embed_python ...)`, but no `st_graph` source includes `embed_python/`. `st_graph` has its own Python embedding (`src/EmbedPython.cpp`, `MPLEngine.cxx`). The `dependency-layers.md` edge `st_graph → embed_python` is link-only. |
-| Not built | `skymaps` | Lists embed_python in its SCons `skymapsLib.py` only. |
+| Not built | `skymaps` | `PySkyFunction` uses `embed_python::Module`, and `skymaps/CMakeLists.txt` links it `PUBLIC`, but skymaps is not in `FERMI_COMPONENTS`. |
 
 ## Key abstractions
 
@@ -120,6 +120,13 @@ modules, are installed into `site-packages/fermitools/`. The test uses
 `embed_python_Test.py`; `Test.py` is an older copy without
 `stringlistdict`.
 
+### Environment variables
+
+None read by embed_python itself (no `getenv`). The embedded interpreter
+honours the usual Python variables (`PYTHONPATH`, `PYTHONHOME`) when
+`Py_Initialize` runs. Variables set by conda activation are described
+under "Runtime environment" in ScienceTools' `docs/architecture/README.md`.
+
 ### File formats
 
 None. Input is any importable Python module.
@@ -140,7 +147,11 @@ None. Input is any importable Python module.
   directory is on `sys.path` (via `fermitools.pth`, the module search
   path of the conda Python). Running from `src/embed_python/python/` also
   works. The test exits 0 on success and 1 on failure. No data files and
-  no scratch output.
+  no scratch output. The project harness `recipe/tests/ST-unit-test` runs
+  `test_embed_python` in its default list (from the current directory) and
+  checks only the exit status; no output is compared and no reference data
+  exists anywhere. See "Testing" in ScienceTools'
+  `docs/architecture/README.md`.
 - **Legacy:** `SConscript`, `embed_pythonLib.py` (adds `-rdynamic` for
   Linux SCons users), `.cvsignore`.
 - **CI:** `azure-pipelines.yml` (shared `fermi-lat/ci` templates).
