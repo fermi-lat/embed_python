@@ -6,7 +6,7 @@ target_include_directories(
   $<INSTALL_INTERFACE:>
 )
 
-target_link_libraries(embed_python PUBLIC Python3::Python)
+target_link_libraries(embed_python PRIVATE Python3::Python)
 
 set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
 
