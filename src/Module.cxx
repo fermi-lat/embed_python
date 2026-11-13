@@ -184,7 +184,7 @@ void Module::getValue(const std::string& key, int& value)const
 void Module::getValue(const std::string& key, int& value, int default_value)const
 { 
     PyObject* o = attribute(key, false); 
-    if( o==0){ 
+    if( o==nullptr){ 
         value = default_value;
 
     }else{
@@ -204,7 +204,7 @@ void Module::getValue(const std::string& key, double& value)const
 void Module::getValue(const std::string& key, double& value, double default_value)const
 { 
     PyObject* o = attribute(key, false); 
-    if( o==0){ 
+    if( o==nullptr){ 
         value = default_value;
 
     }else{
@@ -226,7 +226,7 @@ void Module::getValue(const std::string& key, std::string& value)const
 void Module::getValue(const std::string& key, std::string& value, std::string default_value)const
 { 
     PyObject* o = attribute(key, false); 
-    if( o==0){ 
+    if( o==nullptr){ 
         value = default_value;
 
     }else{
@@ -242,8 +242,8 @@ void Module::getList(const std::string& listname, std::vector<std::string>& name
 {
     PyObject* plist( attribute(listname) )
         , *iterator( PyObject_GetIter(plist) )
-        , *item(0);
-    if( iterator==NULL) {
+        , *item(nullptr);
+    if( iterator==nullptr) {
         throw std::invalid_argument("Module: "+ listname +" is not a list");
     }
     if( verbose() ) std::cout << "Parsing list " << listname << std::endl;
@@ -265,8 +265,8 @@ void Module::getList(const std::string& listname, std::vector<double>& values)co
 {
     PyObject* plist( attribute(listname) )
         , *iterator( PyObject_GetIter(plist) )
-        , *item(0);
-    if( iterator==NULL) {
+        , *item(nullptr);
+    if( iterator==nullptr) {
         throw std::invalid_argument("Module: "+ listname +" is not a list");
     }
     if( verbose() ) std::cout << "Parsing list " << listname << std::endl;
@@ -289,7 +289,7 @@ void Module::getDict(const std::string& dictname, std::map<std::string,double>& 
     PyObject* pdict( attribute(dictname) )
         , *iterator( PyObject_GetIter(pdict) );
 
-    if( iterator==NULL) {
+    if( iterator==nullptr) {
         throw std::invalid_argument("Module: "+ dictname +" is not a dictionary");
     }
     PyObject *key, *value;
@@ -312,7 +312,7 @@ void Module::getDict(const std::string& dictname, std::map<std::string,std::vect
     PyObject* pdict( attribute(dictname) )
         , *dict_iterator( PyObject_GetIter(pdict) );
 
-    if( dict_iterator==NULL) {
+    if( dict_iterator==nullptr) {
         throw std::invalid_argument("Module: "+ dictname +" is not a dictionary");
     }
     PyObject *key, *values;
@@ -321,7 +321,7 @@ void Module::getDict(const std::string& dictname, std::map<std::string,std::vect
     while (PyDict_Next(pdict, &pos, &key, &values)) {
         std::string skey = PyUnicode_AsUTF8(key);
         PyObject *list_iterator( PyObject_GetIter(values) );
-        if( list_iterator==NULL) {
+        if( list_iterator==nullptr) {
             throw std::invalid_argument("Module: dictionary value for "+ skey +" is not a list");
         }
         std::vector<double> v;
@@ -347,7 +347,7 @@ void Module::getDict(const std::string & dictname,
                      std::map<std::string, std::vector<std::string> > & valuemap) const {
    PyObject * pdict(attribute(dictname));
    PyObject * dict_iterator(PyObject_GetIter(pdict));
-   if (dict_iterator==NULL) {
+   if (dict_iterator==nullptr) {
       throw std::invalid_argument("Module: "+ dictname +" is not a dictionary");
    }
    PyObject *key, *values;
@@ -356,7 +356,7 @@ void Module::getDict(const std::string & dictname,
    while (PyDict_Next(pdict, &pos, &key, &values)) {
       std::string skey = PyUnicode_AsUTF8(key);
       PyObject *list_iterator( PyObject_GetIter(values) );
-      if (list_iterator==NULL) {
+      if (list_iterator==nullptr) {
          throw std::invalid_argument("Module: dictionary value for "+ skey +" is not a list");
       }
       std::vector<std::string> v;
